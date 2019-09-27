@@ -1,0 +1,73 @@
+@charset "utf-8";
+
+html, body, div, span, object, iframe,
+h1, h2, h3, h4, h5, h6, blockquote, pre,
+abbr, address, cite, code,
+del, dfn, em, img, ins, kbd, q, samp,
+small, strong, sub, sup, var,
+b, i,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	outline: 0;
+	vertical-align: baseline;
+	background: transparent;
+}
+h1, h2, h3, h4, h5, h6{
+	font-size: 100%;
+}
+body{
+	line-height: 1;
+}
+article, aside, canvas, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section, summary {
+	display: block;
+}
+html,body,
+div,p,li,dt,dd,a {
+  word-wrap : break-word ;
+}
+del {
+	text-decoration: line-through;
+}
+li{
+	list-style-type: none;
+}
+img {
+	margin: 0px;
+	padding: 0px;
+	border: none;
+	vertical-align:bottom;
+}
+a{
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	vertical-align: baseline;
+	background: transparent;
+	img{
+		border: 0px;
+	}
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+input, select {
+	vertical-align: middle;
+}
+address,caption,cite,code,dfn,em,var {
+	font-style: normal;
+	font-weight: normal;
+}
+.clearfix:before,
+.clearfix:after { content:""; display:table;}
+.clearfix:after { clear:both;}
+.clearfix { zoom:1;}

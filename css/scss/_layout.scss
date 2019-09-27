@@ -1,0 +1,420 @@
+@charset "utf-8";
+
+/*
+
+# CSS layout
+
+*/
+
+/* ## common ===============================
+全体設定 */
+
+/* -- all page -------------------*/
+
+*{
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-o-box-sizing: border-box;
+	-ms-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+html,body {
+	height:100%;
+	width:100%;
+	margin: 0 auto;
+	line-height: 1.5;
+	font-size: 14px;
+	color: #666;
+	line-height: 1.5;
+	font-family: "ヒラギノ角ゴ Pro W3","Hiragino Kaku Gothic Pro","メイリオ","Meiryo",sans-serif;
+}
+body{
+	word-wrap: break-word;
+	overflow-wrap: break-word;
+}
+
+/* -- link -------------------*/
+a {
+	color: $main_color;
+	text-decoration: none;
+	&:hover{
+		text-decoration: underline;
+	}
+}
+
+/* web icon 基本カラー */
+a[class^="icon-"]:before, a[class*=" icon-"]:before,
+a[class^="icon-"]:hover:before, a[class*=" icon-"]:hover:before{
+	text-decoration:none;
+	color:$main_color;
+}
+
+@media screen and (max-width: $res_width) {
+	body{
+		-webkit-text-size-adjust: none;
+	}
+	a {
+		text-decoration: underline;
+
+	}
+	a:hover{
+		text-decoration: none;
+	}
+}
+
+p { margin: 0;}
+
+/* iphoneのみで効かせる */
+body.iPhone{
+	#f_main .fot_contact .contact dl dd{
+		font-size: 25px;
+	}
+}
+/* ipadのみで効かせる */
+#page.ipad{
+	#f_main .fot_contact .contact dl dd{
+		font-size: 25px;
+	}
+}
+
+/* ## page ===============================
+全体レイアウト設定 */
+
+/* -- all area -------------------*/
+#page {
+	overflow:hidden;
+	min-width:$default_width;
+	text-align:center;
+	margin:0 auto;
+	position:relative;
+	#main #maincolumn{
+		@include clfix;
+		#content{
+			@include clfix;
+			text-align:left;
+			min-height: 600px;
+			padding:20px 0 70px;
+		}
+	}
+	@media screen and (max-width: $res_width) {
+		min-width: inherit;
+		#main #maincolumn #content{
+			padding-bottom: 50px;
+		}
+	}
+}
+
+.innerWrap {
+	@include clfix;
+	max-width: $default_width;
+	width: 100%;
+	padding: 0 15px;
+	margin: 0 auto;
+	& + .innerWrap{
+		margin-top: 60px;
+	}
+	@media screen and (max-width: $res_width) {
+		width: auto;
+		& + .innerWrap{
+			margin-top: 30px;
+		}
+	}
+}
+.page_tit_set{
+	@include clfix;
+	width: $default_width;
+	padding: 0 15px;
+	margin: 0 auto;
+	@media screen and (max-width: $res_width) {
+		width: auto;
+	}
+}
+
+.inner {
+	@include clfix;
+	& + .inner{
+		margin-top: 30px;
+	}
+}
+
+
+/* ## header ===============================
+ヘッダー設定 */
+
+/* -- default -------------------*/
+#header{
+	text-align:left;
+	border-bottom:1px solid #CCC;
+	#headMain{
+		position:relative;
+		padding-top: 20px;
+	}
+	#logo{
+		padding:0 0 20px;
+		a{
+			font-weight: bold;
+			font-size: 30px;
+			text-decoration: none;
+			line-height: 1;
+		}
+		@media screen and (max-width: $res_width) {
+			padding-bottom: 15px;
+		}
+	}
+	#hNavMenu{
+		display:none;
+		position: absolute;
+		right: 14px;
+		top: 20px;
+		.menu-trigger{
+			position: relative;
+			width: 23px;
+			height: 20px;
+			&,
+			span{
+				display: inline-block;
+				transition: all .4s;
+				box-sizing: border-box;
+			}
+			span{
+				position: absolute;
+				left: 0;
+				width: 100%;
+				height: 3px;
+				background-color: $main_color;
+				border-radius: 4px;
+				&:nth-of-type(1) {top: 0;}
+				&:nth-of-type(2) {top: 8px;}
+				&:nth-of-type(3) {bottom: 0;}
+			}
+			&.on span{
+				&:nth-of-type(1) {
+					-webkit-transform: translateY(8px) rotate(-45deg);
+					transform: translateY(8px) rotate(-45deg);
+				}
+				&:nth-of-type(2) {
+					opacity: 0;
+				}
+				&:nth-of-type(3) {
+					-webkit-transform: translateY(-9px) rotate(45deg);
+					transform: translateY(-9px) rotate(45deg);
+				}
+			}
+		}
+		@media screen and (max-width: $res_width) {
+			display: block;
+		}
+	}
+}
+
+/* -- global navigation -------------------*/
+#globalNav{
+	clear: both;
+	display:block;
+	.innerWrap{
+		position: relative;
+	}
+	@media screen and (min-width: $res_pc_width) {
+		#gNav{
+			background:#FFFFFF;
+			> ul{
+				display: table;
+				width: 100%;
+				table-layout: fixed;
+				margin-bottom: 1px;
+				li{
+					list-style-type: none;
+					text-align:center;
+					display: table-cell;
+					vertical-align: middle;
+					height: 50px;
+					position: relative;
+					-webkit-box-sizing: border-box;
+					-moz-box-sizing: border-box;
+					-o-box-sizing: border-box;
+					-ms-box-sizing: border-box;
+					box-sizing: border-box;
+					&.spOn{
+						display: none;
+					}
+					&:before,
+					&:last-child:after{
+						content: "";
+						position: absolute;
+						left: 0;
+						top: 50%;
+						margin-top: -15px;
+						height: 30px;
+						width: 1px;
+						border-left: 1px solid #DDDDDD;
+					}
+					&:last-child:after{
+						right: 0;
+						left: inherit;
+					}
+					a{
+						vertical-align: middle;
+						display:table;
+						width:100%;
+						font-weight:bold;
+						text-decoration:none;
+						border-bottom: 3px solid #FFF;
+						height: 100%;
+						color:#444;
+						div{
+							height: 100%;
+							display: table-cell;
+							vertical-align: middle;
+							padding: 0 5px;
+						}
+						&:hover,
+						&.act{
+							color: $main_color;
+							border-bottom: 3px solid $main_color;
+						}
+					}
+					span{
+						display: inline-block;
+					}
+				}
+			}
+		}
+		#uNav{
+			position:absolute;
+			top:-50px;
+			right:11px;
+			text-align:right;
+		}
+	}
+	#uNav{
+		ul{
+			margin-left:10px;
+			li{
+				margin-left:25px;
+				display:inline-block;
+			}
+			a:before{
+				font-family: "fontello";
+				display: inline-block;
+				content: '\e835';
+				margin-right: 5px;
+				text-decoration:none !important;
+			}
+		}
+	}
+	@media screen and (max-width: $res_width) {
+		display: none;
+		&.open{
+			display: block;
+		}
+		#uNav{
+			padding: 15px 0;
+		}
+	}
+}
+
+/* -- page bar -------------------*/
+.bread_crumb{
+	text-align:left;
+	padding:10px 0 0 ;
+	text-align:left;
+	font-size: 12px;
+	li{
+		font-weight: bold;
+		display:inline-block;
+		line-height:1.6;
+		a{
+			font-weight: normal;
+			white-space:nowrap;
+			text-decoration:underline;
+			&:hover{
+				text-decoration:none;
+			}
+			&:after{
+				@include ico_defo($content:'\e804',$fz:15px);
+			}
+		}
+		@media screen and (max-width: $res_width) {
+			font-size:12px;
+		}
+	}
+	.icon-home-1:before{
+		color: $main_color;
+	}
+}
+
+/* ## footer ===============================
+フッター設定 */
+
+#footer{
+	background:$main_color;
+	color:#FFF;
+	overflow:hidden;
+	padding: 15px 0;
+	border-top:1px solid #DDD;
+}
+
+/* -- pagetop -------------------*/
+#pagetop {
+	position: fixed;
+	bottom: 0px;
+	right: 0px;
+	z-index:9999;
+	width: 50px;
+	height:50px;
+	a{
+		border-radius: 4px;
+		background:$main_color;
+		text-align:center;
+		font-size:20px;
+		color:#FFFFFF;
+		display:block;
+		width: 45px;
+		height:45px;
+		text-decoration: none;
+		div{ padding:8px 0 0 0;}
+		i:before{ margin:0 !important;}
+		&:hover {
+			@include to_img;
+			text-decoration: none;
+		}
+	}
+	@media screen and (max-width: $res_width) {
+		width: 40px;
+		height:40px;
+		a{
+			width: 35px;
+			height: 35px;
+			font-size: 17px;
+			div{ padding:5px 0 0 0;}
+		}
+	}
+}
+
+/* -- footer nav -------------------*/
+.fNav {
+	padding:0 0 10px;
+	ul{
+		text-align:center;
+		overflow:hidden;
+		margin:0 auto;
+		li{
+			margin:0 15px;
+			display: inline-block;
+			a{
+				color: #FFF;
+				&:before{
+					@include ico_defo($fz:14px);
+				}
+			}
+		}
+	}
+}
+
+/* -- copyright -------------------*/
+#footer #copy{
+	font-size:0.93rem;
+	text-align:center;
+}
+

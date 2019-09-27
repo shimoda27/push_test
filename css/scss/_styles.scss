@@ -1,0 +1,1541 @@
+@charset "utf-8";
+
+/*
+
+# CSS other
+---
+その他設定
+
+*/
+
+/* 透過設定 */
+.toimg a img,
+.tobg a{
+	@include to_img;
+}
+
+/* 画像可変 */
+img.resize{
+	@include re_img;
+}
+
+/* リンク アイコン */
+.cursor a{
+	display: inline-block;
+	text-indent: -1.4em;
+	margin-left: 1em;
+	&:before{
+		@include ico_defo;
+		overflow: hidden;
+		text-align: right;
+		padding-right: 8px;
+		vertical-align: middle;
+	}
+}
+a.cursor{
+	color: $sub_color;
+	text-decoration: underline;
+	&:before{
+		@include ico_defo;
+	}
+	&:hover{
+		text-decoration: none;
+	}
+}
+
+.tel-link a{
+	text-decoration: none;
+}
+
+.pcOn{
+	display:block;
+	@media screen and (max-width: $res_width) {
+		display:none;
+	}
+}
+.pciOn{
+	display: inline;
+	@media screen and (max-width: $res_width) {
+		display:none;
+	}
+}
+.spOn{
+	display:none;
+	@media screen and (max-width: $res_width) {
+		display: block;
+	}
+}
+.spiOn{
+	display:none;
+	@media screen and (max-width: $res_width) {
+		display: inline;
+	}
+}
+
+/*
+
+# CSS input
+---
+フォーム設定
+
+*/
+
+/* ## input　textarea ===============================
+テキストフォーム設定 */
+input[type="text"],
+input[type="password"],
+input[type="email"],
+input[type="tel"],
+input[type="search"],
+textarea {
+	background-color: $bg_color;
+	border: 1px solid $bd_color;
+	box-sizing: border-box;
+	padding: 8px;
+	font-size: 1rem;
+	border-radius: 0;
+	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
+	-webkit-appearance: none;
+}
+input[type="text"],
+input[type="password"],
+input[type="email"],
+input[type="tel"],
+input[type="search"]{
+	line-height: 1.2;
+}
+label input[type="radio"] ,
+label input[type="checkbox"]{
+	margin-right: 0.2em;
+	margin: 5px 3px 5px 2px;
+	padding: 0;
+	vertical-align: middle;
+}
+
+:placeholder-shown,
+::-webkit-input-placeholder,
+:-moz-placeholder,
+::-moz-placeholder,
+:-ms-input-placeholder{
+	color: #999;
+}
+
+/* ## pulldown ===============================
+プルダウン設定 */
+
+.select-wrap_form_nmal{
+	background-color: #fff;
+	background-image: none;
+	border: 1px solid $bd_color;
+	border-radius: 4px;
+	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
+	display:inline-block;
+	padding: 6px 5px;
+	transition: border-color 0.15s ease-in-out 0s, box-shadow 0.15s ease-in-out 0s;
+}
+
+.select-wrap_form{
+	position:relative;
+	overflow:hidden;
+	display:inline-block;
+	vertical-align: bottom;
+	border: 1px solid $bd_color;
+	select{
+		-webkit-appearance:none;
+		-moz-appearance:none;
+		appearance:none;
+		appearance:none;
+		position:relative;
+		z-index:2;
+		display:block;
+		width:100%;
+		margin:0;
+		padding: 5px;
+		background:transparent;
+		border:0;
+		outline:none;
+		line-height:1.5;
+		padding-right: 35px;
+		-moz-appearance: none;
+		text-indent: 0.01px;
+		text-overflow: '';
+		&::-ms-expand {
+			display: none;
+		}
+	}
+}
+.entypo-down-open-mini{
+	&:before{
+		@include ico_defo($content:'\e806');
+		color: $main_color;
+		position:absolute;
+		z-index:1;
+		top:50%;
+		right:3px;
+		margin-top:-.7rem;
+		font-size:20px;
+		line-height:1;
+	}
+	&:after{
+		position:absolute;
+		content: "";
+		right: 1.9em;
+		top:50%;
+		margin-top:-.6rem;
+		width: 1px;
+		height: 20px;
+		background-color: $bd_color;
+	}
+}
+
+/* ## radio checkbox ===============================
+ラジオボタン、チェックリスト設定 */
+ul.spli li{
+	margin-bottom: 5px;
+	list-style-type: none;
+	&:last-child{
+		margin-bottom: 0;
+	}
+}
+ul.spliin li{
+	display: inline-block;
+	list-style-type: none;
+	@media screen and (max-width: $res_width) {
+		display: inline-block;
+		margin-bottom: 5px;
+		&:last-child{
+			margin-bottom: 0;
+		}
+	}
+}
+
+.inp_sty input[type=radio],
+.inp_sty input[type=checkbox] {
+	display: none;
+	margin: 0;
+	& + label {
+		position: relative;
+		display: inline-block;
+		margin-right: 12px;
+		cursor: pointer;
+		padding: 0 0 0 24px;
+		&::before {
+			content: "";
+			position: absolute;
+			top: 11px;
+			left: 0;
+			-moz-box-sizing: border-box;
+			box-sizing: border-box;
+			display: block;
+			width: 18px;
+			height: 18px;
+			margin-top: -9px;
+			background: #FFF;
+		}
+	}
+
+}
+.inp_sty input[type=radio] + label::before {
+	border: 2px solid $bd_color;
+	border-radius: 30px;
+}
+.inp_sty input[type=checkbox] + label::before {
+	border: 2px solid $bd_color;
+	border-radius: 5px;
+}
+
+.inp_sty input[type=radio]:checked + label,
+.inp_sty input[type=checkbox]:checked + label {
+	color: $main_color;
+	&::before {
+		border: 2px solid $main_color;
+	}
+	&::after {
+		content: "";
+		position: absolute;
+		top: 11px;
+		-moz-box-sizing: border-box;
+		box-sizing: border-box;
+		display: block;
+	}
+}
+
+.inp_sty input[type=radio]:checked + label::after {
+	left: 5px;
+	width: 8px;
+	height: 8px;
+	margin-top: -4px;
+	background: $main_color;
+	border-radius: 8px;
+}
+.inp_sty input[type=checkbox]:checked + label::after {
+	left: 3px;
+	width: 16px;
+	height: 8px;
+	margin-top: -8px;
+	border-left: 1px solid $main_color;
+	border-bottom: 1px solid $main_color;
+	-webkit-transform: rotate(-45deg);
+	-ms-transform: rotate(-45deg);
+	transform: rotate(-45deg);
+}
+
+/*
+
+# CSS table
+---
+テーブル設定
+
+*/
+
+/* ## table_sty ===============================
+レイアウト設定 */
+
+.table_sty,
+.table_sty02,
+.table_sty_nores{
+	width: 100%;
+	border-top: 1px solid $bd_color;
+	border-left: 1px solid $bd_color;
+	th,
+	td{
+		padding: 10px;
+		border-right: 1px solid $bd_color;
+		border-bottom: 1px solid $bd_color;
+		text-align: left;
+		vertical-align: middle;
+	}
+	th{
+		font-weight: normal;
+		background: $bg_color;
+	}
+	.th_width{
+		width: 210px;
+		@media screen and (max-width: $res_width) {
+			width: 120px;
+		}
+	}
+	@media screen and (max-width: $res_width) {
+		&:not(.table_sty_nores){
+			&,
+			tbody,
+			tr,
+			th,
+			td{
+				display: block;
+				width: 100% !important;
+				max-width: inherit;
+			}
+			th{
+				font-size: 16px;
+			}
+			td,th{
+				padding:5px 10px;
+			}
+		}
+	}
+}
+.table_sty02{
+	border-left: 0;
+	th{
+		background: none;
+	}
+	th,td{
+		border-left: 0;
+		border-right: 0;
+	}
+	@media screen and (max-width: $res_width) {
+		th{
+			padding-bottom: 0;
+			border-bottom: 0;
+		}
+		td{
+			padding-top: 0px !important;
+		}
+	}
+}
+
+th.th_width{
+	width: 200px;
+}
+
+
+/* ## width ===============================
+横幅設定 */
+
+.w100p{ width: 100% !important;}
+.w90p{ width: 90% !important;}
+.w80p{ width: 80% !important;}
+.w70p{ width: 70% !important;}
+.w60p{ width: 60% !important;}
+.w50p{ width: 50% !important;}
+.w40p{ width: 40% !important;}
+.w35p{ width: 35% !important;}
+.w30p{ width: 30% !important;}
+.w25p{ width: 25% !important;}
+.w20p{ width: 20% !important;}
+.w15p{ width: 15% !important;}
+.w10p{ width: 10% !important;}
+.w5p{ width: 5% !important;}
+
+.w500px{ width: 500px !important;}
+.w450px{ width: 450px !important;}
+.w400px{ width: 400px !important;}
+.w350px{ width: 350px !important;}
+.w300px{ width: 300px !important;}
+.w290px{ width: 290px !important;}
+.w280px{ width: 280px !important;}
+.w270px{ width: 270px !important;}
+.w260px{ width: 260px !important;}
+.w250px{ width: 250px !important;}
+.w240px{ width: 240px !important;}
+.w220px{ width: 220px !important;}
+.w200px{ width: 200px !important;}
+.w190px{ width: 190px !important;}
+.w180px{ width: 180px !important;}
+.w170px{ width: 170px !important;}
+.w160px{ width: 160px !important;}
+.w150px{ width: 150px !important;}
+.w145px{ width: 145px !important;}
+.w135px{ width: 135px !important;}
+.w115px{ width: 115px !important;}
+.w15px{ width: 15px !important;}
+
+@media screen and (max-width: $res_width) {
+.width_rst{
+	width: auto !important;
+}
+}
+
+/*
+
+# CSS button
+---
+ボタン設定
+a,buttonのみ使用可
+*/
+
+/* ## button ===============================
+ボタン基本設定 */
+
+a[class^="btn_sty"],
+button[class^="btn_sty"],
+span[class^="btn_sty"]{
+	text-align:center;
+	display: inline-block;
+	font-weight:bold;
+	text-decoration: none;
+	position:relative;
+	padding: 8px 20px 8px 10px;
+	zoom:1;
+	line-height: 1.2;
+	font-size: 14px;
+	margin: 0;
+	border-radius: 5px;
+	&.btn_styBack{
+		padding: 8px 10px 8px 20px;
+	}
+}
+a[class^="btn_sty"],
+button[class^="btn_sty"]{
+	@include to_img;
+}
+
+a[class^="btn_sty"]:before,
+button[class^="btn_sty"]:before,
+span[class^="btn_sty"]:before{
+	@include ico_defo_pos($content:'\e804',$rt:2px);
+}
+.btn_styWh:before{ color: #999 !important;}
+a.btn_styBack:before,
+button.btn_styBack:before{
+	@include ico_defo_pos($content:'\e803',$lt:2px);
+}
+
+/* iconなしの場合使用 */
+.btnico_off:before{	display: none;}
+
+.box_default{ border-radius: 0;}
+.box_radius{ border-radius: 5px;}
+.box_round{ border-radius: 2em;}
+.box_circle{ border-radius: 50%;}
+
+
+/* ## style ===============================
+ボタンスタイル設定 */
+
+/* 標準 */
+.btn_sty01{
+	color:#FFFFFF;
+	border:1px solid $main_color;
+	background:$main_color;
+	@include hover() {
+		color:#FFFFFF;
+		border:1px solid $main_color;
+		background:$main_color;
+	}
+}
+
+/* 標準反転 */
+.btn_sty01_2{
+	color:$main_color;
+	border:1px solid $main_color;
+	background:#FFF;
+	@include hover() {
+		color:$main_color;
+		border:1px solid $main_color;
+		background:#FFF;
+	}
+}
+
+/* 標準2 */
+.btn_sty02{
+	color:#FFFFFF;
+	border:1px solid $sub_color;
+	background:$sub_color;
+	@include hover() {
+		color:#FFFFFF;
+		border:1px solid $sub_color;
+		background:$sub_color;
+	}
+}
+
+/* グレーボタン */
+.btn_styGr{
+	color:#FFFFFF;
+	border:1px solid $gray2_bg;
+	background:$gray2_bg;
+	@include hover() {
+		color:#FFFFFF;
+		border:1px solid $gray2_bg;
+		background:$gray2_bg;
+	}
+}
+
+/* 白ボタン */
+.btn_styWh{
+	color:#666666;
+	border:1px solid #CFCFCF;
+	background-color:#FFF;
+	background:#FFF;
+	background: linear-gradient(#FFF, $bg_color);
+	@include hover() {
+		color:#666666;
+		border:1px solid #CFCFCF;
+		background-color:#FFF;
+		background:#FFF;
+		background: linear-gradient(#FFF, $bg_color);
+	}
+}
+
+/* 戻るボタン */
+.btn_styBack{
+	color:#FFFFFF;
+	border:1px solid $gray2_bg;
+	background:$gray2_bg;
+	@include hover() {
+		color:#FFFFFF;
+		border:1px solid $gray2_bg;
+		background:$gray2_bg;
+	}
+}
+
+/* btnArea使用時のみ横幅固定 */
+.btn_area,
+.btn_area02{
+	text-align: center;
+	a[class^="btn_sty"],
+	button[class^="btn_sty"],
+	span[class^="btn_sty"]{
+		min-width:240px;
+		padding: 12px 20px;
+		margin:0 auto;
+		@media screen and (max-width: $res_width) {
+
+		}
+	}
+}
+
+ul.btn_area,
+ul.btn_area02 {
+	padding-top:20px;
+	text-align:center;
+	letter-spacing: -.40em;
+	li{
+		vertical-align:top;
+		display: inline-block;
+		letter-spacing: normal;
+		margin:0 10px;
+	}
+}
+@media screen and (max-width: $res_width) {
+	ul.btn_area{
+		li{
+			display: block;
+			margin:0;
+			+ li{
+				margin-top: 10px;
+			}
+		}
+	}
+	ul.btn_area02 {
+		overflow: hidden;
+		li{
+			display: block;
+			width: 48%;
+			float: left;
+			margin: 0 4% 0 0 ;
+			&:last-child{
+				margin:0;
+			}
+			a[class^="btn"],
+			button[class^="btn"]{
+				width: 100%;
+				min-width: inherit;
+			}
+		}
+	}
+}
+
+
+/*
+
+# CSS TITLE
+---
+タイトル設定
+
+*/
+#page_tit_sty,
+.tit_sty{
+	color:$main_color;
+	padding:5px 0;
+	border-bottom:2px solid $bd_color;
+	margin-bottom:20px;
+	position:relative;
+	span{
+		font-size: 1.45rem;
+	}
+	a{
+		color:$main_color;
+		text-decoration:none;
+		&:hover{
+			text-decoration:underline;
+		}
+	}
+	.link{
+		position:absolute;
+		right:0;
+		top:1em;
+		font-size: 13px;
+		a{
+			color: #333333;
+			margin-left: 10px;
+			&:before{
+				color: $main_color;
+				text-decoration: none;
+			}
+		}
+	}
+	@media screen and (max-width: $res_width) {
+		padding:0 0 5px;
+		margin:0 10px 15px;
+		span{
+			font-size:16px;
+		}
+	}
+}
+
+.tit_sty02{
+	padding-bottom:10px;
+	border-bottom:1px solid $bd_color;
+	margin-bottom:15px;
+	span{
+		padding-left:8px;
+		font-size:1.3rem;
+		line-height:1;
+		border-left:5px solid $main_color;
+	}
+	a{
+		color:#666;
+		text-decoration:none;
+		&:hover{
+			text-decoration:underline;
+		}
+	}
+	@media screen and (max-width: $res_width) {
+		margin-bottom:10px;
+		span{
+			font-size:14px;
+		}
+	}
+}
+
+.tit_sty03{
+	padding:8px 7px 8px;
+	color:#333333;
+	text-align: left;
+	font-weight: bold;
+	border: 1px solid $bd_color;
+	margin-bottom:15px;
+	background:#FFF;
+	background: linear-gradient(#FFF, #F3F3F3);
+	span{
+		border-left: 4px solid $main_color;
+		padding-left: 8px;
+		line-height: 1;
+	}
+	@media screen and (max-width: $res_width) {
+		margin-bottom:10px;
+		font-size:13px;
+	}
+}
+
+.tit_sty04{
+	padding:6px 10px 5px;
+	font-size:1.08rem;
+	color:#666;
+	border:1px solid $bd_color;
+	background-color:$main_color;
+	margin-bottom:15px;
+	@media screen and (max-width: $res_width) {
+		margin-bottom:10px;
+		font-size:13px;
+	}
+}
+.tit_sty05{
+	padding:6px 10px 5px;
+	font-size:1.08rem;
+	color:$main_color;
+	background-color:$main_color;
+	margin-bottom:15px;
+	@media screen and (max-width: $res_width) {
+		margin-bottom:10px;
+		font-size:13px;
+	}
+}
+
+/*
+
+# CSS TAB
+---
+タブ設定
+
+*/
+
+/* tab sty */
+.tab_sty,
+.tab_sty02{
+	.tab-box{
+		padding-top: 15px;
+		> div{
+			display: none;
+			&.act{
+				display: block;
+			}
+		}
+	}
+}
+.tab_sty{
+	.tab-menu{
+		display: table;
+		width: 100%;
+		table-layout: fixed;
+		li{
+			display: table-cell;
+			vertical-align: bottom;
+			border-bottom: 1px solid $bd_color;
+			div{
+				border: 1px solid $bd_color;
+				border-bottom: 0;
+				border-radius: 6px 6px 0 0;
+				text-align: center;
+				background: $bg_color;
+				position: relative;
+				cursor: pointer;
+				margin: 0 5px;
+				padding: 8px 0;
+			}
+			&:first-child div{
+				margin-left: 0;
+			}
+			&:last-child div{
+				margin-right: 0;
+			}
+			&.act{
+				div{
+					background: #FFF;
+					color: $main_color;
+					font-weight: bold;
+					cursor: default;
+					&:before{
+						content: "";
+						position: absolute;
+						bottom: -1px; left: 0;
+						width: 100%;
+						height: 1px;
+						background: #FFF;
+					}
+				}
+			}
+			@media screen and (max-width: $res_width) {
+				div{
+					font-size: 13px;
+					margin: 0 3px;
+				}
+			}
+		}
+	}
+}
+.tab_sty02{
+	.tab-menu{
+		letter-spacing: -.4em;
+		li{
+			display: inline-block;
+			letter-spacing: normal;
+			position: relative;
+			&:last-child:after,
+			&:before{
+				content: "";
+				display: block;
+				width: 1px;
+				height: 20px;
+				background: $bd_color;
+				position: absolute;
+				top: 50%; left: 0;
+				margin-top: -10px;
+			}
+			&:last-child:after{
+				left: inherit; right: 0;
+			}
+			div{
+				text-align: center;
+				cursor: pointer;
+				position: relative;
+				margin: 0 1px;
+				padding: 5px 30px;
+				color: $txt_sub_color;
+			}
+			&.act{
+				div{
+					&:after{
+						content: "";
+						display: block;
+						position: absolute;
+						bottom: 0;left: 50%;
+						width: 60%;
+						height: 3px;
+						margin-left: -30%;
+						background: $main_color;
+					}
+				}
+			}
+			@media screen and (max-width: $res_width) {
+				div{
+					padding: 8px 15px;
+				}
+			}
+		}
+	}
+}
+
+/* easyResponsiveTabs.js */
+ul.resp-tabs-list:not(.single){
+	margin: 0px;
+	padding: 0px;
+	display: table;
+	width: 100%;
+	table-layout:fixed;
+	margin-bottom: -1px;
+	li {
+		display: table-cell;
+		list-style: none;
+		cursor: pointer;
+		width: auto;
+		vertical-align: bottom;
+		background: none !important;
+		text-align: center !important;
+		&:first-child div{
+			margin-left: 0;
+		}
+		div{
+			padding: 8px 5px;
+			margin: 0 0 0 8px;
+			border-radius:6px 6px 0 0;
+			border: 1px solid $bd_color;
+			border-bottom: 0;
+			background-color: $bg_color;
+		}
+	}
+}
+
+.resp-tabs-container {
+	padding: 0px;
+	background-color: #fff;
+	clear: left;
+}
+.resp-tab-content {
+	display: none;
+	padding: 20px 0 0;
+	border-top: 1px solid $bd_color;
+}
+
+
+.single{
+	.resp-tab-content {
+		border-top: 0;
+		padding-top: 0;
+	}
+	@media screen and (max-width: $res_width) {
+		h2.resp-accordion {
+			display: none !important;
+		}
+		.resp-tab-content{
+			padding-top: 10px;
+		}
+	}
+}
+
+.resp-content-active,
+.resp-accordion-active {
+	display: block;
+}
+.resp-tab-active {
+	border-bottom: none;
+	background-color: #fff;
+	div {
+		border: 1px solid $bd_color;
+		border-bottom: 0 #fff solid;
+		color: $main_color;
+		font-weight: 800;
+		background-color: #FFF !important;
+		position: relative;
+		z-index: 1px;
+	}
+}
+
+
+h2.resp-accordion {
+	display: none;
+	cursor: pointer;
+	background: $bg_color !important;
+	border: 1px solid $bd_color !important;
+	@include ff_gos;
+	font-weight: normal;
+	padding: 10px 0 10px 10px;
+	margin-bottom: 2px;
+	span.resp-arrow{
+		width: 38px;
+		height: 28px;
+		float: right;
+		display: block;
+		padding-left: 10px;
+		border-left: 1px solid $bd_color;
+		margin-top: -3px;
+		@include acdon_icn($bgc:$main_color);
+	}
+}
+h2.resp-tab-active{
+	div{
+		border: 0;
+		background: none !important;
+	}
+	span.resp-arrow:before {
+		display:none;
+	}
+	span.resp-arrow:after {
+		top: 50%;
+		transform: rotate(-180deg);
+		-webkit-transform: rotate(-180deg);
+		-moz-transform: rotate(-180deg);
+		-ms-transform: rotate(-180deg);
+		-o-transform: rotate(-180deg);
+	}
+}
+
+
+/*-----------Vertical tabs-----------*/
+.resp-vtabs {
+	@include clfix;
+	ul.resp-tabs-list {
+		float: left;
+		width: 30%;
+		table-layout: inherit;
+		margin: 0 !important;
+		border-bottom: 1px solid $bd_color !important;
+	}
+	.resp-vtabs .resp-tabs-list li {
+		display: block;
+		padding: 0;
+		div{
+			margin: 0;
+			border-radius:0;
+			background-color: $bg_color;
+			border: 0;
+			border-left:1px solid $bd_color !important;
+			border-top: 1px solid $bd_color !important;
+			padding: 10px;
+			text-align: left;
+		}
+		&.resp-tab-active {
+			position: relative;
+			z-index: 1;
+			border-top: 0;
+			border-right: 1px solid #FFF !important;
+			margin-right: -1px !important;
+			div {
+				border: 1px solid $bd_color !important;
+				border-top:1px solid $bd_color !important;
+				border-width: 1px 0 0 3px !important;
+				padding: 10px 7px !important;
+				color: $main_color;
+				font-weight: 800;
+				background-color: #FFF !important;
+				position: relative;
+				z-index: 1px;
+			}
+		}
+	}
+	.resp-tabs-container {
+		padding: 10px;
+		background-color: #fff;
+		border: 1px solid $bd_color;
+		float: left;
+		width: 70%;
+		min-height: 250px;
+		clear: none;
+		box-sizing: border-box;
+	}
+	.resp-tab-content {
+		border: none;
+		word-wrap: break-word;
+		padding-top: 0;
+	}
+}
+
+h2.resp-accordion{
+	position: relative;
+}
+.resp-easy-accordion{
+	h2.resp-accordion {
+		display: block;
+	}
+	.resp-tab-content{
+		border-top: 0;
+		padding: 10px;
+	}
+}
+.resp-jfit {
+	width: 100%;
+	margin: 0px;
+}
+.resp-tab-content-active {
+	display: block;
+}
+
+@media only screen and (max-width: $res_width) {
+	ul.resp-tabs-list {
+		display: none !important;
+	}
+	h2.resp-accordion {
+		display: block;
+	}
+	.resp-vtabs .resp-tab-content,
+	.resp-tab-content{
+		border-top: 0;
+		padding: 15px 0;
+	}
+	.resp-vtabs .resp-tabs-container {
+		border: none;
+		float: none;
+		width: 100%;
+		min-height: 100px;
+		clear: none;
+		clear: both;
+		padding: 0;
+	}
+	.resp-accordion-closed {
+		display: none !important;
+	}
+}
+
+/* 開閉 */
+.acdon_list{
+	border-top:1px solid $bd_color;
+	dl{
+		dt{
+			background: $bg_color;
+			border-bottom: 1px solid $bd_color;
+			cursor: pointer;
+			padding: 10px 45px;
+			@include acdon_icn($prit:18px);
+			span{
+				color: $main_color;
+				font-size: 20px;
+				font-weight: bold;
+				position: absolute;
+				top: 9px; left: 12px;
+			}
+		}
+		dd{
+			display: none;
+			border-bottom: 1px solid $bd_color;
+			&:last-child{
+				border-bottom: 0;
+			}
+			.txt{
+				position: relative;
+				padding: 15px 20px 15px 45px;
+				overflow: hidden;
+				span{
+					color: $sub3_color;
+					font-size: 20px;
+					font-weight: bold;
+					position: absolute;
+					top: 9px; left: 12px;
+				}
+			}
+			@media screen and (max-width: $res_width) {
+				.txt{
+					.a_txt{
+						float: none;
+						width: auto;
+						margin-bottom: 10px;
+					}
+					.box_sty02{
+						ul{
+							width: auto;
+							li{
+								float: none;
+								width: auto;
+								margin-right: 0;
+								&:not(:last-child):after{
+									content:'\e8a5';
+									font-size: 48px;
+									position: static;
+									top: inherit; right: inherit;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+/*
+
+# CSS FONT LAYOUT
+---
+フォント設定
+
+*/
+
+/* ## color ===============================
+テキストカラー設定 */
+
+.tRed	 {color: $red;}
+.tGreen	 {color: #00FF00;}
+.tBlue	 {color: #2D2886;}
+.tLiBlue  {color: #0066CC;}
+.tBlack	 {color: #000000;}
+.tWhite	 {color: #FFFFFF;}
+.tOrange {color: #FF9900;}
+.tYellow {color: #FFFF00;}
+.tGray	 {color: #666666;}
+.tPink	 {color: #DE0A4E;}
+.main_color{color: $main_color /* 基本カラー */;}
+.sub_color{color: $sub_color /* サブカラー1 */;}
+.sub2_color{color: $sub2_color /* サブカラー2*/;}
+.sub3_color{color: $sub3_color /* サブカラー3*/;}
+
+/* ## size rem ===============================
+テキストサイズ設定 */
+
+.fnt10{ font-size:0.71428571rem;}
+.fnt11{ font-size:0.785714281rem;}
+.fnt12{ font-size:0.857142852rem;}
+.fnt13{ font-size:0.928571423rem;}
+.fnt14{ font-size:1rem;}
+.fnt15{ font-size:1.071428565rem;}
+.fnt16{ font-size:1.142857136rem;}
+.fnt17{ font-size:1.214285707rem;}
+.fnt18{ font-size:1.285714278rem;}
+.fnt19{ font-size:1.357142849rem;}
+.fnt20{ font-size:1.42857142rem;}
+.fnt21{ font-size:1.499999991rem;}
+.fnt22{ font-size:1.571428562rem;}
+.fnt23{ font-size:1.642857133rem;}
+.fnt24{ font-size:1.714285704rem;}
+.fnt25{ font-size:1.785714275rem;}
+.fnt26{ font-size:1.857142846rem;}
+.fnt27{ font-size:1.928571417rem;}
+.fnt28{ font-size:1.999999988rem;}
+.fnt29{ font-size:2.071428559rem;}
+.fnt30{ font-size:2.14285713rem;}
+.fnt35{ font-size:2.499999985rem;}
+.fnt40{ font-size:2.85714284rem;}
+
+.fwn{ font-weight: normal;}
+.fwb{ font-weight: bold;}
+
+/* ## background ===============================
+背景設定 */
+
+.bgWh{ background-color:#FFF;}
+.bgBk{ background-color:#000;}
+.bgGr{ background-color:#EEE;}
+.bg_color{ background-color:$bg_color;}
+.bg2_color{ background-color:$bg2_color;}
+.gray_bg{ background-color:$gray_bg;}
+.gray2_bg{ background-color:$gray2_bg;}
+
+/*
+
+# CSS OHTER LAYOUT
+---
+配置、レイアウト設定
+
+*/
+
+/* ## 2～8カラム ===============================
+横並びボックス設定 */
+.area8list,
+.area7list,
+.area6list,
+.area5list,
+.area4list,
+.area3list,
+.area2list{
+	overflow:hidden;
+	_zoom:1;
+	 > li{
+		list-style-type: none !important;
+		float:left;
+	}
+}
+
+/* -- item8list link nav -------------*/
+.area8list > li{
+	width:11.3%;
+	margin-left:1.36%;}
+/* -- item7list link nav -------------*/
+.area7list > li{
+	width:13%;
+	margin-left:1.5%;}
+/* -- item6list link nav -------------*/
+.area6list > li{
+	width:15.5%;
+	margin-left:1.4%;}
+/* -- item5list link nav -------------*/
+.area5list > li{
+	width:18.5%;
+	margin-left:1.85%;}
+/* -- item4list link nav -------------*/
+.area4list > li{
+	width:23%;
+	margin-left:2.66%;}
+/* -- item3list link nav -------------*/
+.area3list > li{
+	width:31.5%;
+	margin-left:2.7%;}
+/* -- item2list link nav -------------*/
+.area2list > li{
+	width: 48.5%;
+	margin-left: 3%;}
+
+.area8list > li:nth-child(8n+1),
+.area7list > li:nth-child(7n+1),
+.area6list > li:nth-child(6n+1),
+.area5list > li:nth-child(5n+1),
+.area4list > li:nth-child(4n+1),
+.area3list > li:nth-child(3n+1),
+.area2list > li:nth-child(2n+1){
+	clear:both;
+	margin-left:0 !important;}
+
+@media screen and (max-width: $res_width) {
+.sm_area2list > li,
+.md_area3list > li:nth-child(3n+1),
+.area8list.sm_area2list > li:nth-child(8n+1),
+.area7list.sm_area2list > li:nth-child(7n+1),
+.area6list.sm_area2list > li:nth-child(6n+1),
+.area5list.sm_area2list > li:nth-child(5n+1),
+.area4list.sm_area2list > li:nth-child(4n+1),
+.area3list.sm_area2list > li:nth-child(3n+1){
+	width: 48%;
+	clear: inherit !important;
+	margin-left: 4% !important;
+}
+.sm_area2list > li:nth-child(2n+1),
+.area8list.sm_area2list > li:nth-child(2n+1),
+.area7list.sm_area2list > li:nth-child(2n+1),
+.area6list.sm_area2list > li:nth-child(2n+1),
+.area5list.sm_area2list > li:nth-child(2n+1),
+.area4list.sm_area2list > li:nth-child(2n+1),
+.area3list.sm_area2list > li:nth-child(2n+1){
+	clear:both !important;
+	margin-left:0 !important;
+}
+.sm_arealistsm_arealist > li{
+	float: none !important;
+	width: auto !important;
+	margin-left: 0 !important;
+}
+}
+
+/* -- 高さ揃え -------------------*/
+.area_he_list{
+	display:-webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-flex-wrap:wrap;
+	flex-wrap: wrap;
+	-webkit-justify-content:space-between;
+	justify-content:space-between;
+	overflow: hidden;
+	> li{
+		float: none !important;
+	}
+}
+
+/* ## list ===============================
+list設定 */
+
+.list_nosty li{
+	list-style-type: none;
+	margin-left: 0;
+}
+.list_disc li{
+	list-style-type: disc;
+	margin-left: 1.3em;
+}
+.list_circle li{
+	list-style-type: circle;
+	margin-left: 1.3em;
+}
+.list_square li{
+	list-style-type: square;
+	margin-left: 1.3em;
+}
+.list_decimal li{
+	list-style-type: decimal;
+	margin-left: 1.5em;
+	@media screen and (-webkit-min-device-pixel-ratio:0) {
+		list-style-type: decimal;
+		margin-left: 1.8em;
+	}
+}
+
+
+/* ## レイアウト ===============================
+box layout設定 */
+
+.box_sty{
+	border: 1px solid $bd_color;
+	padding: 10px;
+	overflow: hidden;
+	background-color: $bg_color;
+}
+.box_sty02{
+	border: 1px solid $bd_color;
+	padding: 10px;
+	overflow: hidden;
+	background-color: #FFF;
+}
+.box_sty02_b{
+	border: 2px solid $bd_color;
+	padding: 10px;
+	overflow: hidden;
+	font-weight: bold;
+	background-color: #FFF;
+}
+.box_sty_udline{
+	border-top: 3px double $bdg_color;
+	border-bottom: 3px double $bdg_color;
+	padding: 25px 15px 30px;
+	@media only screen and (max-width: $res_width) {
+		padding: 20px 15px;
+	}
+}
+.box_sty_red{
+	border: 1px solid $red;
+	color: $red;
+	padding: 10px;
+	overflow: hidden;
+}
+.box_sty_red_b{
+	border: 2px solid $red;
+	color: $red;
+	padding: 10px;
+	overflow: hidden;
+	font-weight: bold;
+}
+.box_sty_di{
+	display: inline;
+	vertical-align: middle;
+}
+.box_sty_dib{
+	display: inline-block;
+	vertical-align: middle;
+}
+.box_sty_db{
+	display: block;
+}
+.box_sty_dib_li{
+	letter-spacing: -.4em;
+}
+.box_sty_dib_li li{
+	display: inline-block;
+	letter-spacing: normal;
+	vertical-align: middle;
+}
+.box_sty_table_ul,
+.box_sty_table_dl dl,
+.box_sty_table{
+	width: 100%;
+	display: table;
+	table-layout: fixed;
+	overflow: hidden;
+}
+.box_sty_table_ul li,
+.box_sty_table_dl dl dt,
+.box_sty_table_dl dl dd,
+.box_sty_table .td{
+	width: auto;
+	display: table-cell;
+	vertical-align: middle;
+	word-wrap:break-word;
+}
+@media screen and (max-width: $res_width) {
+.box_sty_table_rst,
+.box_sty_table_rst .td{
+	display: block;
+}
+}
+
+.bdr{ border-right: 1px solid $bd_color;}
+.bdl{ border-left: 1px solid $bd_color;}
+.bdt{ border-top: 1px solid $bd_color;}
+.bdb{ border-bottom: 1px solid $bd_color;}
+
+// 角丸
+.box_sty_or_f {
+	position: relative;
+	background: $bg_color;
+	border: 1px solid $bg_color;
+	padding: 10px;
+	text-align: center;
+	margin-bottom: 15px;
+	border-radius: 6px;
+	&:after,
+	&:before {
+		top: 100%;
+		left: 50%;
+		border: solid transparent;
+		content: " ";
+		height: 0;
+		width: 0;
+		position: absolute;
+		pointer-events: none;
+	}
+	&:after {
+		border-top-color: $bg_color;
+		border-width: 10px;
+		margin-left: -10px;
+	}
+	&:before {
+		border-top-color: $bg_color;
+		border-width: 11px;
+		margin-left: -11px;
+	}
+}
+
+/* ## placement ===============================
+位置調整設定 */
+.txtL { text-align: left !important;}
+.txtC { text-align: center !important;}
+.txtR { text-align: right !important;}
+.txtTT{ vertical-align: top !important;}
+.txtTC{ vertical-align: middle !important;}
+.txtTB{ vertical-align: bottom !important;}
+.floatL { float: left;}
+.floatR { float: right;}
+.imgL { float:left; margin:0 15px 15px 0;}
+.imgR { float:right; margin:0 0 15px 15px;}
+.imgL02 { float:left; margin:0 15px 0 0;}
+.imgR02 { float:right; margin:0 0 0 15px;}
+.txtoh{ overflow: hidden;}
+.txtcb{ clear: both;}
+
+@media screen and (max-width: $res_width) {
+.imgL,
+.imgR{
+	float:none;
+	text-align:center;
+	margin:0 0 10px 0;
+}
+.txtL_sp { text-align: left !important;}
+.txtC_sp { text-align: center !important;}
+.txtR_sp { text-align: right !important;}
+}
+
+/* ## margin ===============================
+スペース設定 */
+
+.m0{margin:0 !important}
+.mt0{margin-top:0 !important}
+.mr0{margin-right:0 !important}
+.mb0{margin-bottom:0 !important}
+.ml0{margin-left:0 !important}
+
+$value: 5;
+@while $value < 185 {
+	.m#{$value} {
+		margin: $value + px !important;
+	}
+	.mt#{$value} {
+		margin-top: $value + px !important;
+	}
+	.mr#{$value} {
+		margin-right: $value + px !important;
+	}
+	.mb#{$value} {
+		margin-bottom: $value + px !important;
+	}
+	.ml#{$value} {
+		margin-left: $value + px !important;
+	}
+	$value: $value + 5;
+}
+
+
+/* ## padding ===============================
+スペース設定 */
+.p0{padding:0 !important}
+.pt0{padding-top:0 !important}
+.pr0{padding-right:0 !important}
+.pb0{padding-bottom:0 !important}
+.pl0{padding-left:0 !important}
+
+$value: 5;
+@while $value < 30 {
+	.p#{$value} {
+		padding: $value + px !important;
+	}
+	.pt#{$value} {
+		padding-top: $value + px !important;
+	}
+	.pr#{$value} {
+		padding-right: $value + px !important;
+	}
+	.pb#{$value} {
+		padding-bottom: $value + px !important;
+	}
+	.pl#{$value} {
+		padding-left: $value + px !important;
+	}
+	$value: $value + 5;
+}
+
+/*------------------------------------------ End */
